@@ -1,0 +1,3 @@
+file /mnt/share/flipper/target/thumbv7em-none-eabihf/debug/flipper.fap
+target extended-remote :3333
+monitor reset halt

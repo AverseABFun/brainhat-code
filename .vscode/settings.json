@@ -1,29 +1,38 @@
 {
-    // ignore the yellow squiggles on some of the rust-analyzer things
-    "rust-analyzer.check.overrideCommand": "ssh averse@192.168.1.41 sh -c \"cd /mnt/share && /home/averse/.cargo/bin/cargo check --workspace --message-format=json --all-targets\"",
-    "rust-analyzer.runnables.command": "ssh averse@192.168.1.41 sh -c cd /mnt/share && /home/averse/.cargo/bin/cargo",
-    "rust-analyzer.rustfmt.overrideCommand": "ssh averse@192.168.1.41 sh -c \"cd /mnt/share && rustfmt\"",
-    "rust-analyzer.cargo.buildScripts.overrideCommand": "ssh averse@192.168.1.41 sh -c \"cd /mnt/share && /home/averse/.cargo/bin/cargo check --quiet --workspace --message-format=json --all-targets --keep-going\"",
     "terminal.integrated.profiles.linux": {
         "SSH": {
             "path": "ssh",
             "args": [
-                "averse@192.168.1.41"
+                "arthur@192.168.1.32"
             ]
         }
     },
     "terminal.integrated.defaultProfile.linux": "SSH",
-    "python.languageServer": "Pylance",
-    "python.analysis.diagnosticSeverityOverrides": {
-        "reportMissingModuleSource": "none",
-        "reportShadowedImports": "none"
-    },
-    "python.analysis.extraPaths": [
-        "/home/arthur/.vscode/extensions/joedevivo.vscode-circuitpython-0.2.0-linux-x64/boards/0x239A/0x8142",
-        "/home/arthur/.vscode/extensions/joedevivo.vscode-circuitpython-0.2.0-linux-x64/stubs",
-        "/home/arthur/.config/Code/User/globalStorage/joedevivo.vscode-circuitpython/bundle/20250104/adafruit-circuitpython-bundle-py-20250104/lib"
+    "rust-analyzer.linkedProjects": [
+        "./flipper/Cargo.toml",
+        "./Cargo.toml"
     ],
-    "circuitpython.board.version": null,
-    "circuitpython.board.vid": "0x239A",
-    "circuitpython.board.pid": "0x8142"
+    "cortex-debug.enableTelemetry": false,
+    "cortex-debug.variableUseNaturalFormat": false,
+    "cortex-debug.armToolchainPath": "/home/arthur/.ufbt/toolchain/x86_64-linux/bin",
+    "cortex-debug.openocdPath": "/home/arthur/.ufbt/toolchain/x86_64-linux/bin/openocd",
+    "cortex-debug.gdbPath": "/home/arthur/.ufbt/toolchain/x86_64-linux/bin/arm-none-eabi-gdb-py3",
+    "editor.formatOnSave": true,
+    "files.associations": {
+        "*.scons": "python",
+        "SConscript": "python",
+        "SConstruct": "python",
+        "*.fam": "python"
+    },
+    "python.analysis.typeCheckingMode": "off",
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "clangd.path": "/home/arthur/.ufbt/toolchain/x86_64-linux/bin/clangd",
+    "clangd.arguments": [
+        "--query-driver=**/arm-none-eabi-*",
+        "--compile-commands-dir=${workspaceFolder}/.vscode",
+        "--clang-tidy",
+        "--header-insertion=never"
+    ]
 }

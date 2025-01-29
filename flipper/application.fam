@@ -1,0 +1,24 @@
+# For details & more options, see documentation/AppManifests.md in firmware repo
+
+App(
+    appid="brainhat",  # Must be unique
+    name="BrainHat",  # Displayed in menus
+    apptype=FlipperAppType.EXTERNAL,
+    entry_point="brainhat_app",
+    stack_size=4 * 1024,
+    # fap_category="Tools",
+    # Optional values
+    # fap_version="0.1",
+    fap_icon="brainhat.png",  # 10x10 1-bit PNG
+    # fap_description="A simple app",
+    fap_author="Arthur Beck",
+    fap_weburl="https://github.com/AverseABFun/brainhat-code",
+    fap_icon_assets="images",  # Image assets to compile for this application
+    sources=["target/thumbv7em-none-eabihf/release/libflipper.a"],
+    fap_extbuild=(
+        ExtFile(
+            path="${FAP_WORK_DIR}/target/thumbv7em-none-eabihf/release/libflipper.a",
+            command="cargo build --release --verbose --target thumbv7em-none-eabihf --target-dir ${FAP_WORK_DIR}/target --manifest-path ${FAP_SRC_DIR}/Cargo.toml",
+        ),
+    ),
+)
